@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>수진 장 | Research</title>
+  <meta name="description" content="수진 장 · 연구 / 출판 / 프로젝트" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ------ 색 / 타이포 ------ */
+    :root{
+      --bg:#ffffff; --text:#111; --muted:#5a5f67; --link:#1a5cff; --border:#e7eaf0;
+      --accent:#111; --code:#f6f8fb; --shadow:0 8px 30px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0c0f; --text:#e8eaed; --muted:#a3a6ad; --link:#8ab4f8; --border:#1f2330; --accent:#e8eaed; --code:#12141a; --shadow:0 12px 40px rgba(0,0,0,.35)}
+    }
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;line-height:1.7}
+    h1,h2,h3{font-family:"Noto Serif KR", ui-serif, Georgia, serif;color:var(--accent);margin:0 0 10px}
+    h1{font-size:28px}
+    h2{font-size:22px;margin-top:6px}
+    h3{font-size:18px}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ------ 레이아웃 (왼쪽 고정 사이드 + 오른쪽 본문) ------ */
+    .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:28px;padding:40px 20px}
+    aside{position:sticky;top:24px;height:fit-content;border:1px solid var(--border);border-radius:16px;padding:22px;background:var(--bg);box-shadow:var(--shadow)}
+    main{padding:0}
+
+    /* ------ 사이드바 ------ */
+    .avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;display:block;margin-bottom:14px;box-shadow:var(--shadow)}
+    .name{font-size:26px;font-weight:700;margin:4px 0}
+    .role{color:var(--muted);font-size:14px;margin-bottom:14px}
+    .links a{display:inline-block;margin-right:12px}
+    .sep{height:1px;background:var(--border);margin:16px 0}
+    .meta{font-size:14px;color:var(--muted)}
+
+    /* ------ 본문 ------ */
+    section{padding:22px 24px;border:1px solid var(--border);border-radius:16px;background:var(--bg);box-shadow:var(--shadow);margin-bottom:18px}
+    .lead{font-size:16px;color:var(--muted)}
+    .publist{list-style:none;margin:0;padding:0}
+    .pubitem{padding:12px 0;border-bottom:1px dashed var(--border)}
+    .pubitem:last-child{border-bottom:none}
+    .title{font-weight:600}
+    .authors,.venue{font-size:14px;color:var(--muted)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .tag{font-size:12px;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .col-6{grid-column:span 6}
+    .card{padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg)}
+
+    footer{max-width:1100px;margin:10px auto 40px;color:var(--muted);font-size:13px;padding:0 20px}
+
+    @media (max-width: 900px){
+      .wrap{grid-template-columns:1fr}
+      aside{position:static}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- 왼쪽 고정 사이드 -->
+    <aside>
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/000000?v=4" alt="프로필" />
+      <div class="name">수진 장 (Sujin Jang)</div>
+      <div class="role">LLM · 멀티모달 추론 · VQA</div>
+      <div class="meta">
+        <div>CLARA · Research Engineer</div>
+        <div>Seoul, Korea</div>
+      </div>
+      <div class="sep"></div>
+      <div class="links">
+        <a href="mailto:tnwls6865@gmail.com">이메일</a>
+        <a href="https://github.com/tnwls6865" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">Scholar</a>
+        <a href="#" target="_blank" rel="noopener">CV</a>
+      </div>
+      <div class="sep"></div>
+      <div class="meta">마지막 업데이트: <span id="lastup"></span></div>
+    </aside>
+
+    <!-- 오른쪽 본문 -->
+    <main>
+      <section id="about">
+        <h1>About</h1>
+        <p class="lead">대규모 언어모델(LLM)과 멀티모달 학습/추론을 연구합니다. 최근에는 <strong>시각적 프롬프트</strong> 기반 VQA 신뢰도 향상, <strong>LoRA/PEFT</strong> 경량 파인튜닝, <strong>FSDP</strong> 분산 학습 파이프라인에 집중하고 있습니다.</p>
+      </section>
+
+      <section id="research">
+        <h2>Research Interests</h2>
+        <ul>
+          <li>Vision-Language Models (LLaMA 3.2 Vision, ViT 커스터마이제이션)</li>
+          <li>Visual Prompting · Multi-View Ensemble for VQA</li>
+          <li>Efficient Training: LoRA/PEFT, Quantization, FSDP</li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <h2>Selected Publications</h2>
+        <ol class="publist">
+          <li class="pubitem">
+            <div class="title">Confidence-Aware Multi-View Prompting for Robust VQA</div>
+            <div class="authors">S. Jang, et al.</div>
+            <div class="venue">Preprint, 2025</div>
+            <div class="tags">
+              <span class="tag">VQA</span><span class="tag">Visual Prompt</span><a class="tag" href="#">PDF</a><a class="tag" href="#">Code</a>
+            </div>
+          </li>
+          <li class="pubitem">
+            <div class="title">Customizing ViT Representations in LLaMA‑3.2 Vision</div>
+            <div class="authors">S. Jang, et al.</div>
+            <div class="venue">Workshop, 2024</div>
+            <div class="tags"><span class="tag">LLaMA</span><span class="tag">Vision-Language</span><a class="tag" href="#">Slides</a></div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+          <div class="col-6 card">
+            <h3>llama_cookbook — FSDP + LoRA</h3>
+            <p>11B 규모 모델 파인튜닝을 위한 FSDP 기반 분산 학습 스크립트/설정 모음.</p>
+            <p><a href="#">GitHub</a></p>
+          </div>
+          <div class="col-6 card">
+            <h3>Multi‑View VQA</h3>
+            <p>원본/시각 프롬프트/마스킹/객체 only 네 가지 뷰 예측을 신뢰도 기반으로 앙상블.</p>
+            <p><a href="#">Project Page</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="news">
+        <h2>News</h2>
+        <ul>
+          <li>2025‑07 — LLaMA‑3.2V‑11B LoRA 실험 리포 공개</li>
+          <li>2025‑06 — 멀티뷰 VQA 앙상블 코드 정리</li>
+          <li>2025‑05 — MZ세대 × 스포츠산업 리뷰 슬라이드 공개</li>
+        </ul>
+      </section>
+
+      <section id="teaching">
+        <h2>Teaching / Activities</h2>
+        <ul>
+          <li>2025 봄 — 멀티모달 딥러닝 스터디 진행</li>
+          <li>2024 — 대학원 세미나: ViT × LLM 융합</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p><strong>Email</strong> · <a href="mailto:tnwls6865@gmail.com">tnwls6865@gmail.com</a><br/>
+           <strong>Social</strong> · <a href="https://github.com/tnwls6865" target="_blank" rel="noopener">GitHub</a> · <a href="#" target="_blank" rel="noopener">LinkedIn</a> · <a href="#" target="_blank" rel="noopener">X</a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Sujin Jang
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const d = new Date();
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('lastup').textContent = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  </script>
+</body>
+</html>
